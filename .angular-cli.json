@@ -20,7 +20,7 @@
 			"prefix": "dw",
 			"serviceWorker": true,
 			"styles": [
-				"styles/styleguide-one/build/lib.css",
+				"styles/styleguide-one.css",
 				"styles/global.css"
 			],
 			"scripts": [],
