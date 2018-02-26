@@ -1,18 +1,18 @@
 language: node_js
 node_js:
-	- stable
+		- stable
 
 branches:
-	only:
-	- master
+		except:
+			- gh-pages
 
 script:
-	- ng build --prod --output-path docs --base-href daywriting
+		- ng build --prod --output-path docs --base-href daywriting
 
 deploy:
-	provider: pages
-	skip_cleanup: true
-	github_token: $GITHUB_TOKEN
-	on:
-		branch: master	# branch: develop
-	local_dir: docs
+		provider: pages
+		skip_cleanup: true
+		github_token: $GITHUB_TOKEN
+		on:
+				branch: master  # branch: develop
+		local_dir: docs
