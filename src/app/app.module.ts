@@ -23,6 +23,9 @@ import { HomeComponent } from './home/home.component';
 // Guards
 import { ChallengeGuard } from './challenge.guard';
 
+// Service workers
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -34,6 +37,8 @@ import { ChallengeGuard } from './challenge.guard';
 		BrowserModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
+		ServiceWorkerModule
+			.register('/ngsw-worker.js', { enabled: environment.production }),
 		CoreModule,
 		CalendarModule,
 		AppRoutingModule

@@ -53,7 +53,7 @@ export class RestService {
 	}
 
 	get<T>(uri: string, params?: any): Observable<T> {
-		return this.http.get(this.formatUri(uri, params))
+		return this.http.get<T>(this.formatUri(uri, params))
 			.pipe(
 				// map(res => res. as T),
 				catchError(this.handleError<T>('GET ' + uri))
@@ -69,7 +69,7 @@ export class RestService {
 	}
 
 	post<T>(uri: string, body?: any, params?: any): Observable<T> {
-		return this.http.post(this.formatUri(uri, params),
+		return this.http.post<T>(this.formatUri(uri, params),
 			body,
 			{
 				params: params,
@@ -83,7 +83,7 @@ export class RestService {
 	}
 
 	postSecured<T>(uri: string, params?: any): Observable<T> {
-		return this.authHttp.post(this.formatUri(uri, params))
+		return this.authHttp.post(this.formatUri(uri, params), params)
 			.pipe(
 				map(res => res.json() as T),
 				catchError(this.handleError<T>('POST ' + uri))

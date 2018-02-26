@@ -9,6 +9,7 @@ button > span {
 	z-index: 10;
 	opacity: 1;
 }
+button.is-active > span,
 button:hover > span,
 button:focus > span {
 	color: #f9a03f;
@@ -37,15 +38,18 @@ button:before {
 	transition: 200ms;
 	transform: scale(0, 0);
 }
+button.is-active:before,
 button:hover:before,
 button:focus:before {
 	transform: scale(1, 1);
 }
+button.is-active > .menu-name > span,
 button:hover > .menu-name > span,
 button:focus > .menu-name > span {
 	background-color: #1f1f1f;
 	color: #fff;
 }
+button.is-active > .menu-name:before,
 button:hover > .menu-name:before,
 button:focus > .menu-name:before {
 	content: "";
@@ -59,6 +63,7 @@ button:focus > .menu-name:before {
 	border-bottom: 10px solid #4f4f4f;
 	border-radius: 2px;
 }
+button.is-active > .menu-name:after,
 button:hover > .menu-name:after,
 button:focus > .menu-name:after {
 	content: "";

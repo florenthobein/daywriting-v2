@@ -7,6 +7,7 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AuthService } from './auth.service';
 import { RestService } from './rest.service';
 import { LangService } from './lang.service';
+import { StoreService } from './store.service';
 
 import { UserService } from './user.service';
 import { DailyChallengeService } from './daily-challenge.service';
@@ -33,7 +34,8 @@ import { throwIfAlreadyLoaded } from './module-import.guard';
 			provide: AuthHttp,
 			useFactory: authHttpFactory, // defines how to provide AuthHttp
 			deps: [ Http, RequestOptions ]
-		}
+		},
+		StoreService
 	]
 })
 

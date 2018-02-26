@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 // import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { WriterComponent } from './writer/writer.component';
 
 // import { AppSettings } from './app-settings'
 
@@ -12,6 +10,7 @@ import { ChallengeGuard } from './challenge.guard';
 
 export const allRoutes: Routes = [
 	{ path: '', component: HomeComponent },
+	{ path: 'calendar', component: HomeComponent },
 	{ path: 'write/:datekey', component: HomeComponent, canActivate: [ ChallengeGuard ] }
 	// {
 	// 	path: '',

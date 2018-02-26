@@ -1,0 +1,34 @@
+
+	<div
+		class="writer">
+		<!-- [ngClass]="{'is-inactive': !isVisible}"> -->
+		<div class="u-container u-mx-auto">
+			 <!-- class="u-absolute u-pin-t" -->
+			<div class="writer-page card card--whiteAlt layout--document u-text-center u-relative u-w-1/2 u-pt-4 u-px-8 u-mb-4">
+				<h1 *ngIf="!challenge.mission" class="writer-page-title">
+					<div class="loading-text loading-text--title"></div>
+	  			<div class="loading-text loading-text--title"></div>
+				</h1>
+				<h1 *ngIf="challenge.mission" class="writer-page-title has-quotes">{{ challenge.mission.texts[langSvc.getLang()] }}</h1>
+				<div *ngIf="!challenge.mission" class="loading-text loading-text--center"></div>
+				<p *ngIf="challenge.mission" class="u-text-tertiary" style="position:relative;bottom:10px">défi du {{ challenge.datekey | datekey2date | date:'d MMMM' }}</p>
+				<!-- <p>
+					<span class="blink" style="display:block;width:2px;height:32px;background:#aaa"></span>
+				</p> -->
+				<p *ngIf="challenge.mission && !authSvc.authenticated()" class="u-text-sm u-text-grey"><em>Votre texte sera enregistré jusqu'à ce que vous fermiez votre navigateur. <strong>Connectez-vous pour le sauvegarder !</strong></em></p>
+				<quill-editor
+					#editor
+					*ngIf="challenge.mission"
+					theme="bubble"
+					[modules]="modules"
+					[style]="{height: '200px', 'font-size': '20px'}"
+					[placeholder]="'Ecrivez ici...'"
+					(onEditorCreated)="setFocus($event)"
+					[formControl]="form.controls['editor']"
+					(onContentChanged)="saved=false"></quill-editor>
+				<!-- <p *ngIf="saved"><em>saved</em></p> -->
+			</div>
+
+		</div>
+
+	</div>

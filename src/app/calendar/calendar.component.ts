@@ -6,6 +6,8 @@ import { DailyChallengeService } from '../core/daily-challenge.service'
 import { UserService } from '../core/user.service'
 import { MissionService } from '../core/mission.service'
 
+import { LangService } from '../core/lang.service'
+
 import { Challenge } from '../models/challenge'
 import { Mission } from '../models/mission'
 
@@ -16,7 +18,7 @@ import {
 
 import { trigger, query, state, style, transition, animate, keyframes } from '@angular/animations';
 
-import { DatekeyPipe } from '../shared/datekey.pipe'
+import { Date2DatekeyPipe } from '../shared/datekey.pipe'
 
 @Component({
 	selector: 'dw-calendar',
@@ -58,6 +60,8 @@ export class CalendarComponent implements OnInit {
 		private challengeSvc: DailyChallengeService,
 		private userSvc: UserService,
 		private missionSvc: MissionService,
+		private date2datekeyPipe: Date2DatekeyPipe,
+		private langSvc: LangService,
 		private route: ActivatedRoute,
 		private router: Router) { }
 
@@ -101,11 +105,22 @@ export class CalendarComponent implements OnInit {
 		this.is_loading = true;
 		this.challengeSvc.getDailyChallenges$()
 			.toPromise()
-			.then(() => this.is_loading = false );
+			.then(() => this.is_loading = false);
+
+		// If today
+		// TODO refactor
+		if (this.router.url === '/') {
+			let datekey = this.date2datekeyPipe.transform(new Date());
+			this.challenge = this.challengeSvc.index[datekey];
+			// console.log()
+		}
 
 		// If focus on challenge
 		this.route.paramMap.subscribe(
-			params => this.challenge = this.challengeSvc.index[params.get('datekey')]
+			params => {
+				if (params.get('datekey'))
+					this.challenge = this.challengeSvc.index[params.get('datekey')]
+			}
 		);
 
 	}
@@ -117,10 +132,10 @@ export class CalendarComponent implements OnInit {
 		if (this.challengeSvc.index[challenge.datekey].mission)
 			return true;
 		this.challengeSvc.createDailyChallenges$(challenge.datekey)
-			.toPromise()
-			.then((new_challenge) => {
-				console.log(new_challenge);
-			});
+			.toPromise();
+			// .then((new_challenge) => {
+			// 	console.log(new_challenge);
+			// });
 	}
 
 }

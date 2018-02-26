@@ -13,7 +13,11 @@ import {
 		</header>
 		<main>
 			<router-outlet></router-outlet>
-		</main>`,
+		</main>
+		<footer class="theme--black layout--document u-p-16 u-text-center">
+			<p>Fait avec <i class="icon icon--heart u-text-tertiary"></i> par <a href="//florent.hobein.fr" target="_blank" rel="noopener">Florent Hobein</a></p>
+			<p><a class="btn" href>English version</a></p>
+		</footer>`,
 	styles: []
 })
 export class AppComponent {
@@ -28,57 +32,3 @@ export class AppComponent {
 		);
 	}
 }
-
-
-
-
-// import { Component, OnInit } from '@angular/core';
-
-// import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-// import { Observable } from 'rxjs/Observable';
-// import {
-//    distinctUntilChanged, switchMap, forkJoin
-//  } from 'rxjs/operators';
-
-// import { AlbumService, SessionService } from '../../core/index';
-// import { Album, User, Media, Revision } from '../../models/index';
-
-// @Component({
-// 	selector: 'zyl-gallery',
-// 	templateUrl: './gallery.component.html',
-// 	styleUrls: ['./gallery.component.css']
-// })
-// export class GalleryComponent implements OnInit {
-
-// 	album: Album;
-// 	medias$: Observable<Media[]>;
-
-// 	constructor(public albumSvc: AlbumService, public sessionSvc: SessionService, private route: ActivatedRoute, private router: Router) { }
-
-// 	ngOnInit() {
-
-// 		this.medias$ = this.route.paramMap.pipe(
-// 			distinctUntilChanged(),
-// 			switchMap((params: ParamMap) => {
-
-// 				// Retrieve the album if not already in our list
-// 				let album_id = params.get('id');
-// 				let album = null;
-// 				if (this.sessionSvc.albums) {
-// 					album = this.sessionSvc.albums.find(album => album.id === album_id);
-// 					this.album = album;
-// 				}
-// 				if (!album) {
-// 					this.albumSvc.get(album_id)
-// 						.toPromise()
-// 						.then(album => this.album = album);
-// 				}
-
-// 				//Retrieve the media list
-// 				return this.albumSvc.getMedias(params.get('id'), { format: 'xl', offset: 0, max: 360 })
-// 			})
-// 		);
-
-// 	}
-
-// }
