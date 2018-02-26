@@ -1,0 +1,74 @@
+button {
+	position: relative;
+}
+button:focus {
+	outline: 0 !important;
+}
+button > span {
+	position: relative;
+	z-index: 10;
+	opacity: 1;
+}
+button:hover > span,
+button:focus > span {
+	color: #f9a03f;
+}
+button > .menu-name > span {
+	position: relative;
+	padding: 2px 6px;
+	border-radius: 2px;
+	background-color: transparent;
+}
+button > .menu-name > span {
+	position: relative;
+	z-index: 10;
+}
+button:before {
+	content: " ";
+	z-index: 1;
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	top: 28px;
+	left: 50%;
+	margin-left: -35px;
+	background-color: #ff145d;
+	border-radius: 100%;
+	transition: 200ms;
+	transform: scale(0, 0);
+}
+button:hover:before,
+button:focus:before {
+	transform: scale(1, 1);
+}
+button:hover > .menu-name > span,
+button:focus > .menu-name > span {
+	background-color: #1f1f1f;
+	color: #fff;
+}
+button:hover > .menu-name:before,
+button:focus > .menu-name:before {
+	content: "";
+	z-index: 1;
+	position: absolute;
+	left: -16px;
+	top: -4px;
+	border-right: 12px solid #4f4f4f;
+	border-left: 12px solid transparent;
+	border-top: 10px solid #4f4f4f;
+	border-bottom: 10px solid #4f4f4f;
+	border-radius: 2px;
+}
+button:hover > .menu-name:after,
+button:focus > .menu-name:after {
+	content: "";
+	z-index: 1;
+	position: absolute;
+	right: -16px;
+	top: -4px;
+	border-left: 12px solid #4f4f4f;
+	border-right: 12px solid transparent;
+	border-top: 10px solid #4f4f4f;
+	border-bottom: 10px solid #4f4f4f;
+	border-radius: 2px;
+}

@@ -1,0 +1,28 @@
+		<button
+			routerLink="/"
+			routerLinkActive="is-active"
+			class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
+			<span class="u-text-xl u-text-tertiary"><i class="icon icon--th"></i></span><br />
+			<span class="menu-name"><span>Calendrier</span></span>
+		</button>
+		<button class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
+			<span class="u-text-xl u-text-tertiary"><i class="icon icon--search"></i></span><br />
+			<span class="menu-name"><span>Recherche</span></span>
+		</button>
+		<h1 class="u-w-1/5">
+			<span class="u-inline-block u-py-1 u-px-4">
+				<img src="assets/logo.png" alt="Daywriting" class="u-h-32" />
+			</span>
+		</h1>
+		<button class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
+			<span class="u-text-xl u-text-tertiary"><i class="icon icon--bell"></i></span><br />
+			<span class="menu-name"><span>Notifications</span></span>
+		</button>
+		<button (click)="authService.signIn()" *ngIf="!authService.authenticated()" class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
+			<span class="u-text-xl u-text-tertiary"><i class="icon icon--user"></i></span><br />
+			<span class="menu-name"><span>Connexion</span></span>
+		</button>
+		<button (click)="authService.signOut()" *ngIf="authService.authenticated()" class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
+			<span class="u-text-xl u-text-tertiary"><i class="icon icon--user"></i></span><br />
+			<span class="menu-name"><span>Deconnexion</span></span>
+		</button>

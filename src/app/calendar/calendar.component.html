@@ -1,0 +1,79 @@
+<div id="calendar-writer"
+		class="u-absolute u-pin-t u-w-full u-z-50"
+		style="transform-origin: 50% 10%;opacity: 0;transform: scale(0, 0) translateY(-100px)"
+		*ngIf="!!challenge"
+		[@writerAnim]="!!challenge">
+
+	<dw-writer [challenge]="challenge"></dw-writer>
+
+	<h4 class="u-text-center u-pt-8">Ils ont également écrit sur ce thème</h4>
+
+	<div class="layout--grid u-container u-mx-auto">
+		<dw-writing-preview class="u-w-1/4 u-p-4"></dw-writing-preview>
+		<dw-writing-preview class="u-w-1/4 u-p-4"></dw-writing-preview>
+		<dw-writing-preview class="u-w-1/4 u-p-4"></dw-writing-preview>
+		<dw-writing-preview class="u-w-1/4 u-p-4"></dw-writing-preview>
+	</div>
+</div>
+
+<!-- Previous month -->
+<div *ngIf="previousMonth.length"
+	class="calendar calendar--previous u-container u-mx-auto u-py-8 u-px-16"
+	[@calendarAnim]="!challenge">
+	<div class="u-p-2" *ngFor="let day of previousMonth">
+		<div
+			*ngIf="day && day.datekey"
+			[ngClass]="{'card--whiteAlt': day.mission && day.mission.texts.fr, 'is-disabled u-bg-palette-g-3': !day.mission, 'is-selected': day.is_today }"
+			class="card card--day is-disabled u-bg-palette-g-3 u-px-4 u-pt-2 u-pb-4 u-h-40 u-overflow-hidden">
+			<h1 [ngClass]="{'u-text-primary': day.has_writing}" class="u-text-grey u-leading-normal">
+				{{ day.datekey | datekey | date:'d' }}
+				<span *ngIf="day.mission && day.mission.texts.fr" class="hlp-day">{{ day.datekey | datekey | date:'LLL' }}</span>
+			</h1>
+			<p *ngIf="day.mission && day.mission.texts.fr" class="u-text-grey u-text-sm">{{ day.mission.texts.fr }}</p>
+		</div>
+	</div>
+</div>
+
+<!-- Current month -->
+<div
+	class="calendar u-container u-mx-auto u-py-8 u-px-16"
+	[@calendarAnim]="!challenge">
+<!-- <div
+	class="calendar layout--grid u-container u-mx-auto u-py-8 u-px-16"
+	[ngClass]="{'is-inactive': isInactive}"> -->
+	<div class="u-p-2" *ngFor="let day of currentMonth">
+		<div
+			*ngIf="day && day.datekey"
+			[ngClass]="{'card--whiteAlt': day.mission && day.mission.texts.fr, 'is-disabled u-bg-palette-g-3': !day.mission, 'is-selected': day.is_today }"
+			class="card card--day u-px-4 u-pt-2 u-pb-4 u-h-40 u-overflow-hidden"
+			routerLink="/write/{{ day.datekey }}"
+			routerLinkActive="is-active"
+			[ngx-scroll-to]="'calendar-writer'"
+			(click)="createChallenge(day)">
+			<h1 [ngClass]="{'u-text-primary': day.has_writing}" class="u-text-grey u-leading-normal">
+				{{ day.datekey | datekey | date:'d' }}
+				<span *ngIf="day.mission && day.mission.texts.fr" class="hlp-day">{{ day.datekey | datekey | date:'LLL' }}</span>
+			</h1>
+			<p *ngIf="day.mission && day.mission.texts.fr"
+				class="u-leading-tight u-text-grey u-text-sm">{{ day.mission.texts.fr }}</p>
+		</div>
+	</div>
+</div>
+
+<!-- Next month -->
+<div *ngIf="nextMonth.length"
+	class="calendar calendar--next u-container u-mx-auto u-py-8 u-px-16"
+	[@calendarAnim]="!challenge">
+	<div class="u-p-2" *ngFor="let day of nextMonth">
+		<div
+			*ngIf="day && day.datekey"
+			[ngClass]="{'card--whiteAlt': day.mission && day.mission.texts.fr, 'is-disabled u-bg-palette-g-3': !day.mission, 'is-selected': day.is_today }"
+			class="card card--day is-disabled u-bg-palette-g-3 u-px-4 u-pt-2 u-pb-4 u-h-40 u-overflow-hidden">
+			<h1 [ngClass]="{'u-text-primary': day.has_writing}" class="u-text-grey u-leading-normal">
+				{{ day.datekey | datekey | date:'d' }}
+				<span *ngIf="day.mission && day.mission.texts.fr" class="hlp-day">{{ day.datekey | datekey | date:'LLL' }}</span>
+			</h1>
+			<p *ngIf="day.mission && day.mission.texts.fr" class="u-text-grey u-text-sm">{{ day.mission.texts.fr }}</p>
+		</div>
+	</div>
+</div>
