@@ -7,7 +7,7 @@ branches:
       - gh-pages
 
 script:
-    - ng build --prod --output-path docs --base-href daywriting
+    - ng build --prod --output-path docs --base-href /daywriting-v2/
 
 deploy:
     provider: pages
