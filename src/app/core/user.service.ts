@@ -5,23 +5,24 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { RestService } from './rest.service';
 
+import { AppSettings } from "../../app-settings.ts";
+
 @Injectable()
 export class UserService {
 
-	private static USERS_ENDPOINT =
-		'https://wt-f23dcdfbf8ed5173b271a502a16e2e6e-0.run.webtask.io/users';
+	private static USERS_ENDPOINT = '/users';
 
 	constructor(private authHttp: AuthHttp, private restSvc: RestService) { }
 
 	store(params: object): any {
 		console.log('store', UserService.USERS_ENDPOINT+'/auth');
-		this.authHttp.post(UserService.USERS_ENDPOINT+'/auth', params)
+		this.authHttp.post(AppSettings.API_URL + UserService.USERS_ENDPOINT+'/auth', params)
 			.toPromise();
 	}
 
 	getUser$(params?: object): Observable<any> {
 		return this.authHttp.get(this.restSvc.formatUri(
-			UserService.USERS_ENDPOINT,
+			AppSettings.API_URL + UserService.USERS_ENDPOINT,
 			params
 		));
 	}

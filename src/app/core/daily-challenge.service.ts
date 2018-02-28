@@ -14,8 +14,7 @@ export class DailyChallengeService {
 
 	index: { [datekey:string]: Challenge } = {};
 
-	private static DAILYCHALLENGES_ENDPOINT =
-		'https://wt-f23dcdfbf8ed5173b271a502a16e2e6e-0.run.webtask.io/dailychallenges';
+	private static DAILYCHALLENGES_ENDPOINT = '/dailychallenges';
 
 	constructor(private restSvc: RestService, private langSvc: LangService) { }
 

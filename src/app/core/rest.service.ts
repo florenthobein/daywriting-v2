@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
+import { AppSettings } from "../../app-settings.ts";
+
 @Injectable()
 export class RestService {
 
@@ -19,7 +21,7 @@ export class RestService {
 	formatUri(uri: string, params?: any): string {
 		uri = uri.replace(/^\//, '');
 		if (!params)
-			return uri;
+			return AppSettings.API_URL + uri;
 		let sections = uri.split(/\//);
 		for (var i in sections) {
 			if (!sections[i].match(/^\:/g))
@@ -30,8 +32,7 @@ export class RestService {
 				delete params[field]
 			}
 		}
-		// console.log(params);
-		return sections.join('/');
+		return AppSettings.API_URL + sections.join('/');
 	}
 
 	/**
