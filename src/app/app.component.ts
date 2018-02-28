@@ -20,8 +20,8 @@ import { LangService } from './core/lang.service';
 		<footer class="theme--black layout--document u-p-16 u-text-center">
 			<p>Fait avec <i class="icon icon--heart u-text-tertiary"></i> par <a href="//florent.hobein.fr" target="_blank" rel="noopener">Florent Hobein</a></p>
 			<p>
-				<a class="btn" href *ngIf="langSvc.getLang() !== 'fr'" (click)="changeLang('fr')">Version française</a>
-				<a class="btn" href *ngIf="langSvc.getLang() !== 'en'" (click)="changeLang('en')">English version</a>
+				<a class="btn" href *ngIf="getLang() !== 'fr'" (click)="changeLang('fr')">Version française</a>
+				<a class="btn" href *ngIf="getLang() !== 'en'" (click)="changeLang('en')">English version</a>
 			</p>
 		</footer>`,
 	styles: []
@@ -36,6 +36,10 @@ export class AppComponent {
 		this.route.paramMap.subscribe(
 			params => this.focusWriting = params.get('id')
 		);
+	}
+
+	getLang(): string {
+		return this.langSvc.getLang();
 	}
 
 	changeLang(locale: string) {
