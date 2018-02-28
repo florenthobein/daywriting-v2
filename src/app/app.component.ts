@@ -40,6 +40,7 @@ export class AppComponent {
 
 	changeLang(locale: string) {
 		this.langSvc.changeLang(locale);
-		this.location.reload();
+		// this.location.reload();
+		window.location.reload();
 	}
 }

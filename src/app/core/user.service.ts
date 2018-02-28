@@ -5,7 +5,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { RestService } from './rest.service';
 
-import { AppSettings } from "../../app-settings.ts";
+import { AppSettings } from "../../app-settings";
 
 @Injectable()
 export class UserService {

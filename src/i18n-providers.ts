@@ -1,7 +1,9 @@
 import { APP_BASE_HREF } from "@angular/common";
-import { CompilerOptions, LOCALE_ID, TRANSLATIONS, TRANSLATIONS_FORMAT } from "@angular/core";
+import { StaticProvider, LOCALE_ID, TRANSLATIONS, TRANSLATIONS_FORMAT } from "@angular/core";
 
-import { AppSettings } from "./app-settings.ts";
+import { AppSettings } from "./app-settings";
+
+declare const require;
 
 /**
  * Returns the current lang for the application
@@ -51,7 +53,7 @@ export function getLang(): string | null {
  * @param isAot a parameter to know if the app is using AOT or not
  * @returns {any}
  */
-export function getTranslationProviders(isAot: boolean): CompilerOptions[] {
+export function getTranslationProviders(isAot: boolean): StaticProvider[] {
 
 	if (isAot) {
 		return [];
@@ -72,7 +74,6 @@ export function getTranslationProviders(isAot: boolean): CompilerOptions[] {
 		return PROVIDERS;
 	}
 
-	declare const require;
 	let translations = require(`raw-loader!./locale/messages.${locale}.xlf`);
 	return [
 			{ provide: TRANSLATIONS, useValue: translations },

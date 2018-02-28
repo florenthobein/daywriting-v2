@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AppSettings } from "../../app-settings.ts";
+import { AppSettings } from "../../app-settings";
 
 @Injectable()
 export class LangService {

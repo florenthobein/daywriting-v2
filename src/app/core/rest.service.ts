@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
-import { AppSettings } from "../../app-settings.ts";
+import { AppSettings } from "../../app-settings";
 
 @Injectable()
 export class RestService {

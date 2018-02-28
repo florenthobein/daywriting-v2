@@ -4,10 +4,12 @@
 
 ## ⚡️ WORK IN PROGRESS ⚡️
 
-### TODO beta.1
+### ROADMAP 1.0.0
 
 #### Tech
 - e2e tests
+- Responsive
+- Simple i18n
 - TravisCI to deploy on Github
 - Refactor API to use Mongoose
 
@@ -15,12 +17,12 @@
 - Notifications
 - User account
 
-### TODO beta.2
+### ROADMAP 1.0.1
 
 #### Tech
 - Switch to Amazon Lambda
 - Angular Universal for SSR
 
-### Features
+#### Features
 - Comments
 - Writing battles
