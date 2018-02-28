@@ -1,21 +1,30 @@
 
-	<div
-		class="writer">
-		<!-- [ngClass]="{'is-inactive': !isVisible}"> -->
+	<div class="writer">
 		<div class="u-container u-mx-auto">
-			 <!-- class="u-absolute u-pin-t" -->
 			<div class="writer-page card card--whiteAlt layout--document u-text-center u-relative u-w-1/2 u-pt-4 u-px-8 u-mb-4">
+
+				<!-- Title -->
 				<h1 *ngIf="!challenge.mission" class="writer-page-title">
 					<div class="loading-text loading-text--title"></div>
 	  			<div class="loading-text loading-text--title"></div>
 				</h1>
 				<h1 *ngIf="challenge.mission" class="writer-page-title has-quotes">{{ challenge.mission.texts[langSvc.getLang()] }}</h1>
+
+				<!-- Date -->
 				<div *ngIf="!challenge.mission" class="loading-text loading-text--center"></div>
-				<p *ngIf="challenge.mission" class="u-text-tertiary" style="position:relative;bottom:10px">défi du {{ challenge.datekey | datekey2date | date:'d MMMM' }}</p>
-				<!-- <p>
-					<span class="blink" style="display:block;width:2px;height:32px;background:#aaa"></span>
-				</p> -->
-				<p *ngIf="challenge.mission && !authSvc.authenticated()" class="u-text-sm u-text-grey"><em>Votre texte sera enregistré jusqu'à ce que vous fermiez votre navigateur. <strong>Connectez-vous pour le sauvegarder !</strong></em></p>
+				<p *ngIf="challenge.mission" class="u-text-tertiary" style="position:relative;bottom:10px"
+					i18n="When happens the challenge@@challengeDateDesc">défi du {{ challenge.datekey | datekey2date | date:'d MMMM' }}
+				</p>
+
+				<!-- Informations -->
+				<p *ngIf="challenge.mission && !authSvc.authenticated()" class="u-text-sm u-text-grey">
+					<em i18n="Warning about writing while not being logged in@@writingNotLoggedInWarning">
+						Votre texte sera enregistré jusqu'à ce que vous fermiez votre navigateur.
+						<strong class="u-whitespace-no-wrap">Connectez-vous pour le sauvegarder !</strong>
+					</em>
+				</p>
+
+				<!-- Editor -->
 				<quill-editor
 					#editor
 					*ngIf="challenge.mission"
@@ -26,9 +35,6 @@
 					(onEditorCreated)="setFocus($event)"
 					[formControl]="form.controls['editor']"
 					(onContentChanged)="saved=false"></quill-editor>
-				<!-- <p *ngIf="saved"><em>saved</em></p> -->
 			</div>
-
 		</div>
-
 	</div>

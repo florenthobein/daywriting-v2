@@ -3,11 +3,11 @@
 			routerLinkActive="is-active"
 			class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
 			<span class="u-text-xl u-text-tertiary"><i class="icon icon--th"></i></span><br />
-			<span class="menu-name"><span>Calendrier</span></span>
+			<span class="menu-name"><span i18n="The global name for calendar view@@calendarView">Calendrier</span></span>
 		</button>
 		<button class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
 			<span class="u-text-xl u-text-tertiary"><i class="icon icon--search"></i></span><br />
-			<span class="menu-name"><span>Recherche</span></span>
+			<span class="menu-name"><span i18n="The global name for search view@@searchView">Recherche</span></span>
 		</button>
 		<h1 class="u-w-1/5">
 			<span class="u-inline-block u-py-1 u-px-4">
@@ -16,13 +16,13 @@
 		</h1>
 		<button class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
 			<span class="u-text-xl u-text-tertiary"><i class="icon icon--bell"></i></span><br />
-			<span class="menu-name"><span>Notifications</span></span>
+			<span class="menu-name"><span i18n="The global name for notification view@@notificationView">Notifications</span></span>
 		</button>
 		<button (click)="authSvc.signIn()" *ngIf="!authSvc.authenticated()" class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
 			<span class="u-text-xl u-text-tertiary"><i class="icon icon--user"></i></span><br />
-			<span class="menu-name"><span>Connexion</span></span>
+			<span class="menu-name"><span i18n="The action to login@@loginAction">Connexion</span></span>
 		</button>
 		<button (click)="authSvc.signOut()" *ngIf="authSvc.authenticated()" class="u-w-1/5 u-inline-block u-border-none u-uppercase u-leading-normal u-text-grey u-text-sm hover_u-text-black">
 			<span class="u-text-xl u-text-tertiary"><i class="icon icon--user"></i></span><br />
-			<span class="menu-name"><span>Deconnexion</span></span>
+			<span class="menu-name"><span i18n="The action to logout@@logoutAction">Deconnexion</span></span>
 		</button>

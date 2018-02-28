@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, ObservableInput } from 'rxjs/Observable';
 import {
 	distinctUntilChanged, switchMap
  } from 'rxjs/operators';
+
+import { LangService } from './core/lang.service';
 
 @Component({
 	selector: 'dw-root',
@@ -16,7 +19,10 @@ import {
 		</main>
 		<footer class="theme--black layout--document u-p-16 u-text-center">
 			<p>Fait avec <i class="icon icon--heart u-text-tertiary"></i> par <a href="//florent.hobein.fr" target="_blank" rel="noopener">Florent Hobein</a></p>
-			<p><a class="btn" href>English version</a></p>
+			<p>
+				<a class="btn" href *ngIf="langSvc.getLang() !== 'fr'" (click)="changeLang('fr')">Version française</a>
+				<a class="btn" href *ngIf="langSvc.getLang() !== 'en'" (click)="changeLang('en')">English version</a>
+			</p>
 		</footer>`,
 	styles: []
 })
@@ -24,11 +30,16 @@ export class AppComponent {
 
 	focusWriting: string;
 
-	constructor(private route: ActivatedRoute, private router: Router) { }
+	constructor(private langSvc: LangService, private location: Location, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 		this.route.paramMap.subscribe(
 			params => this.focusWriting = params.get('id')
 		);
+	}
+
+	changeLang(locale: string) {
+		this.langSvc.changeLang(locale);
+		this.location.reload();
 	}
 }

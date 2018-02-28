@@ -1,7 +1,4 @@
-// todo
-// polyfill https://github.com/web-animations/web-animations-js
-
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +24,14 @@ import { ChallengeGuard } from './challenge.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+// Locale
+import { LangService } from './core/lang.service';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
+
+// AppModule
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -43,7 +48,17 @@ import { environment } from '../environments/environment';
 		CalendarModule,
 		AppRoutingModule
 	],
-	providers: [ChallengeGuard],
-	bootstrap: [AppComponent]
+	providers: [
+		ChallengeGuard,
+		// { provide: TRANSLATIONS,
+		// 	deps: [ LangService ],
+		// 	useFactory: (svc: LangService) => getTranslation(svc.getLang()) },
+		{
+			provide: LOCALE_ID,
+			deps: [ LangService ],
+			useFactory: (svc: LangService) => svc.getLang()
+		}
+	],
+	bootstrap: [ AppComponent ]
 })
 export class AppModule { }
