@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+// Store
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { challengesReducer } from './reducers/challenge.reducer';
+
+
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -33,32 +39,37 @@ registerLocaleData(localeFr, 'fr');
 
 // AppModule
 @NgModule({
-	declarations: [
-		AppComponent,
-		NavBarComponent,
-		HomeComponent,
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		HttpClientModule,
-		ServiceWorkerModule
-			.register('/ngsw-worker.js', { enabled: environment.production }),
-		CoreModule,
-		CalendarModule,
-		AppRoutingModule
-	],
-	providers: [
-		ChallengeGuard,
-		// { provide: TRANSLATIONS,
-		// 	deps: [ LangService ],
-		// 	useFactory: (svc: LangService) => getTranslation(svc.getLang()) },
-		{
-			provide: LOCALE_ID,
-			deps: [ LangService ],
-			useFactory: (svc: LangService) => svc.getLang()
-		}
-	],
-	bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    HomeComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ServiceWorkerModule
+      .register('/ngsw-worker.js', { enabled: environment.production }),
+    CoreModule,
+    CalendarModule,
+    AppRoutingModule,
+    StoreModule.forRoot({ challenges: challengesReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      // logOnly: environment.production,
+    }),
+  ],
+  providers: [
+    ChallengeGuard,
+    // { provide: TRANSLATIONS,
+    //   deps: [ LangService ],
+    //   useFactory: (svc: LangService) => getTranslation(svc.getLang()) },
+    {
+      provide: LOCALE_ID,
+      deps: [ LangService ],
+      useFactory: (svc: LangService) => svc.getLang()
+    }
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

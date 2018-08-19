@@ -14,11 +14,11 @@
 // 	}
 // }
 
-import { Mission } from "./mission"
+import { Mission } from './mission';
 
 export class Writing {
-	id: string;
-	datekey: string;
-	mission: Mission;
-	texts: { [lang:string]:string; };
+  id: string;
+  datekey: string;
+  mission: Mission;
+  texts: { [lang: string]: string; };
 }

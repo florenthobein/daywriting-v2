@@ -1,0 +1,13 @@
+<header class="u-container u-text-center u-mx-auto">
+  <dw-nav-bar class="layout--grid u-px-64"></dw-nav-bar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer class="theme--black layout--document u-p-16 u-text-center">
+  <p>Fait avec <i class="icon icon--heart u-text-tertiary"></i> par <a href="//florent.hobein.fr" target="_blank" rel="noopener">Florent Hobein</a></p>
+  <p>
+    <a class="btn" href *ngIf="getLang() !== 'fr'" (click)="changeLang('fr')">Version française</a>
+    <a class="btn" href *ngIf="getLang() !== 'en'" (click)="changeLang('en')">English version</a>
+  </p>
+</footer>

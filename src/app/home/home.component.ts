@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component } from '@angular/core';
+import {UserService} from '@app/core/user.service';
+import {first} from 'rxjs/operators';
 
 @Component({
-	selector: 'dw-home',
-	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.css'],
+  selector: 'dw-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-	constructor() { }
-
-	ngOnInit() {
-
-	}
-
+  constructor(private userSvc: UserService) {
+    userSvc.getCurrentUser$().pipe(first()).subscribe(() => {});
+  }
 }

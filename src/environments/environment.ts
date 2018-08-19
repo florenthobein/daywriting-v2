@@ -4,5 +4,11 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-	production: false
+  production: false,
+  api_url: 'http://local.daywriting.com:3000/',
+  auth0: {
+    domain: 'daywriting.eu.auth0.com',
+    clientId: 'KjGBu3q3VQPxTWkF9epNHgD2Dzu1jFrT',
+  },
+  id_token: 'daywriting_token',
 };

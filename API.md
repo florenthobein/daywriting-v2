@@ -56,7 +56,6 @@ Write or edit a text. If the daily challenge doesn't already exist, will return 
 ```
 Define the public state of a writing. If no writings already exist for the date, will return a `400 Bad Request` error.
 This modification will be applied to all languages.
-If `day` is not specified, will be today.
 
 ## Users
 

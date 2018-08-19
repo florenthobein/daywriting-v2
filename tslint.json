@@ -10,12 +10,11 @@
 			true,
 			"check-space"
 		],
-		"curly": true,
+		"curly": false,
 		"eofline": true,
 		"forin": true,
 		"import-blacklist": [
-			true,
-			"rxjs"
+			true
 		],
 		"import-spacing": true,
 		"indent": [
@@ -117,13 +116,13 @@
 		"directive-selector": [
 			true,
 			"attribute",
-			"app",
+			"dw",
 			"camelCase"
 		],
 		"component-selector": [
 			true,
 			"element",
-			"app",
+			"dw",
 			"kebab-case"
 		],
 		"use-input-property-decorator": true,
@@ -135,6 +134,7 @@
 		"use-pipe-transform-interface": true,
 		"component-class-suffix": true,
 		"directive-class-suffix": true,
-		"invoke-injectable": true
+		"invoke-injectable": true,
+    "object-curly-spacing": ["always"]
 	}
 }

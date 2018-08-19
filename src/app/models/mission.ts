@@ -6,7 +6,7 @@
 // 	}
 // }
 
-export class Mission {
-	id: string;
-	texts: { [lang:string]:string; };
+export interface Mission {
+  id: string;
+  texts: { [lang: string]: string; };
 }

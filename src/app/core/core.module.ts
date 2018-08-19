@@ -1,50 +1,48 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 import { AuthService } from './auth.service';
 import { RestService } from './rest.service';
 import { LangService } from './lang.service';
-import { StoreService } from './store.service';
 
 import { UserService } from './user.service';
-import { DailyChallengeService } from './daily-challenge.service';
+import { DailychallengeService } from './dailychallenge.service';
 import { MissionService } from './mission.service';
 
 import { throwIfAlreadyLoaded } from './module-import.guard';
+import { environment } from '@env/environment';
+
+export function tokenGetter() {
+  return localStorage.getItem(environment.id_token);
+}
 
 @NgModule({
-	imports: [
-		CommonModule,
-		HttpModule
-	],
-	exports: [ /* components */ ],
-	declarations: [ /* components */ ],
-	providers: [
-		AuthService,
-		RestService,
-		LangService,
-		// HTTP access service
-		UserService,
-		DailyChallengeService,
-		MissionService,
-		{
-			provide: AuthHttp,
-			useFactory: authHttpFactory, // defines how to provide AuthHttp
-			deps: [ Http, RequestOptions ]
-		},
-		StoreService
-	]
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      }
+    })
+  ],
+  exports: [/* components */],
+  declarations: [/* components */],
+  providers: [
+    AuthService,
+    RestService,
+    LangService,
+    UserService,
+    DailychallengeService,
+    MissionService,
+  ]
 })
 
 export class CoreModule {
-	constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
-		throwIfAlreadyLoaded(parentModule, 'CoreModule');
-	}
-}
-
-export function authHttpFactory(http: Http, options: RequestOptions) {
-	return new AuthHttp(new AuthConfig(), http, options);
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
+  }
 }

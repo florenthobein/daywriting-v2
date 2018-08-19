@@ -1,56 +1,59 @@
 import { Injectable } from '@angular/core';
 import Auth0Lock from 'auth0-lock';
-import { tokenNotExpired } from 'angular2-jwt';
-
-import { UserService } from './user.service';
-
-// FIXME: replace these with your own Auth0 'Client ID' and 'Domain'
-const AUTH0_CLIENT_ID = 'KjGBu3q3VQPxTWkF9epNHgD2Dzu1jFrT';
-const AUTH0_DOMAIN = 'daywriting.eu.auth0.com';
-
-// this is the key to the JWT in the browser localStorage
-// AuthConfigConsts.DEFAULT_TOKEN_NAME
-// const ID_TOKEN = 'daywriting-token';
-const ID_TOKEN = 'token';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '@env/environment';
 
 @Injectable()
 export class AuthService {
 
-	lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
-		language: 'fr',
-		// allowedConnections: ['facebook', 'google', 'Username-Password-Authentication'],
-		theme: {
-			logo: 'http://hobein.fr/dw-logo.png'
-		},
-		languageDictionary: {
-			title: 'Connexion'
-		},
-		auth: {
-	// redirectUrl: '',
-	responseType: 'token id_token',
-	audience: `https://${AUTH0_DOMAIN}/userinfo`,
-	params: {
-	scope: 'openid profile email'
-	}
-	}
-	});
+  private loginCallback: (userProfile: any) => void;
 
-	constructor(private userSvc: UserService) {
-		// listening to 'authenticated' events
-		this.lock.on('authenticated', (authResult) => {
-			// localStorage.setItem(ID_TOKEN, authResult.accessToken);
-			localStorage.setItem(ID_TOKEN, authResult.idToken);
-			this.lock.getProfile(authResult.accessToken, (error, profile) => {
-				if (error) { console.log(error); }
-				localStorage.setItem('profile', JSON.stringify(profile));
-				this.userSvc.store(profile);
-			});
-		});
-	}
+  private auth0Options = {
+    language: 'fr',
+    // allowedConnections: ['facebook', 'google', 'Username-Password-Authentication'],
+    theme: {
+      logo: 'http://hobein.fr/dw-logo.png'
+    },
+    languageDictionary: {
+      title: 'Connexion'
+    },
+    auth: {
+      responseType: 'token id_token',
+      audience: `https://${environment.auth0.domain}/userinfo`,
+      params: {
+        scope: 'openid profile email'
+      }
+    },
+    autoclose: true,
+    oidcConformant: true,
+  };
 
-	signIn() { this.lock.show(); }
+  lock = new Auth0Lock(
+    environment.auth0.clientId,
+    environment.auth0.domain,
+    this.auth0Options
+  );
 
-	signOut() { localStorage.removeItem(ID_TOKEN); }
+  constructor(private jwtHelper: JwtHelperService) {
+    this.lock.on('authenticated', (authResult) => {
+      localStorage.setItem(environment.id_token, authResult.idToken);
+      this.lock.getProfile(authResult.accessToken, (error, profile) => {
+        if (error) {
+          console.log(error);
+        }
+        localStorage.setItem('profile', JSON.stringify(profile));
+        if (this.loginCallback)
+          this.loginCallback(profile);
+      });
+    });
+  }
 
-	authenticated() { return tokenNotExpired(ID_TOKEN); }
+  signIn = (loginCallback?: (userProfile: any) => void) => {
+    this.lock.show();
+    this.loginCallback = loginCallback;
+  };
+
+  signOut = () => localStorage.removeItem(environment.id_token);
+
+  authenticated = () => !this.jwtHelper.isTokenExpired();
 }

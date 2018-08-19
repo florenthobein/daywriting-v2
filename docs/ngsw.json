@@ -1,0 +1,53 @@
+{
+  "configVersion": 1,
+  "index": "/daywriting-v2/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/daywriting-v2/favicon.ico",
+        "/daywriting-v2/index.html",
+        "/daywriting-v2/inline.318b50c57b4eba3d437b.bundle.js",
+        "/daywriting-v2/main.e7e329bb80176aed0933.bundle.js",
+        "/daywriting-v2/polyfills.a4e361e1d14549552ed2.bundle.js",
+        "/daywriting-v2/styles.875db50d70ad845ff10f.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/daywriting-v2/assets/bckg.png",
+        "/daywriting-v2/assets/logo.png",
+        "/daywriting-v2/assets/fonts/font-awesome/FontAwesome.otf",
+        "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.eot",
+        "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.svg",
+        "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.ttf",
+        "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.woff",
+        "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/daywriting-v2/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
+    "/daywriting-v2/assets/bckg.png": "05a33ec5e2fea0a583088fd35988fbeefb5119b6",
+    "/daywriting-v2/main.e7e329bb80176aed0933.bundle.js": "7833f4bb663da6ebd6ed2ffd8bee54a3d4601e8c",
+    "/daywriting-v2/assets/logo.png": "bcce947ef28b244458814e49859412f41ef983e9",
+    "/daywriting-v2/polyfills.a4e361e1d14549552ed2.bundle.js": "adabd6573d55d1e843ba7848194656a45cda1156",
+    "/daywriting-v2/assets/fonts/font-awesome/FontAwesome.otf": "048707bc52ac4b6563aaa383bfe8660a0ddc908c",
+    "/daywriting-v2/styles.875db50d70ad845ff10f.bundle.css": "40fb3a3e05edb16debb141f531fe6949fc69a4ff",
+    "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+    "/daywriting-v2/favicon.ico": "6194b3f583a0322ec2a6c72fb848abb3af949c58",
+    "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/daywriting-v2/index.html": "8fceb19b3447748cf24666f1404242ef99586129",
+    "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/daywriting-v2/assets/fonts/font-awesome/fontawesome-webfont.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c"
+  }
+}

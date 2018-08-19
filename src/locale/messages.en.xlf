@@ -90,10 +90,8 @@
         <note priority="1" from="description">When happens the challenge</note>
       </trans-unit>
       <trans-unit id="writingNotLoggedInWarning" datatype="html">
-        <source>Votre texte sera enregistré jusqu&apos;à ce que vous fermiez votre navigateur.
-						<x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Connectez-vous pour le sauvegarder !<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
-				<target>Your text will be saved until you close your browser.
-						<x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Log in to save it!<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <source>Votre texte sera enregistré jusqu&apos;à ce que vous fermiez votre navigateur.</source>
+				<target>Your text will be saved until you close your browser.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/calendar/writer/writer.component.ts</context>
           <context context-type="linenumber">21</context>

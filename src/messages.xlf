@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="d405e0309055e76c8f896767983ffe808ef16a24" datatype="html">
+        <source>Ils ont également écrit sur ce thème</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Message to introduce related writings@relatedWritingsMain</note>
+      </trans-unit>
+      <trans-unit id="calendarView" datatype="html">
+        <source>Calendrier</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav-bar/nav-bar.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">The global name for calendar view</note>
+      </trans-unit>
+      <trans-unit id="searchView" datatype="html">
+        <source>Recherche</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav-bar/nav-bar.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The global name for search view</note>
+      </trans-unit>
+      <trans-unit id="notificationView" datatype="html">
+        <source>Notifications</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav-bar/nav-bar.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The global name for notification view</note>
+      </trans-unit>
+      <trans-unit id="loginAction" datatype="html">
+        <source>Connexion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav-bar/nav-bar.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">The action to login</note>
+      </trans-unit>
+      <trans-unit id="logoutAction" datatype="html">
+        <source>Deconnexion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav-bar/nav-bar.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">The action to logout</note>
+      </trans-unit>
+      <trans-unit id="introductionTitleMain" datatype="html">
+        <source>
+	Relevez le défi !
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/home/home.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Main introduction title</note>
+      </trans-unit>
+      <trans-unit id="introductionTextMain" datatype="html">
+        <source>
+	Entraînez votre créativité avec des défis d&apos;écriture quotidiens.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+	Découvrez, ci-dessous, celui d&apos;aujourd&apos;hui !
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/home/home.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Main introduction text</note>
+      </trans-unit>
+      <trans-unit id="challengeDateDesc" datatype="html">
+        <source>défi du <x id="INTERPOLATION" equiv-text="{{ challenge.datekey | datekey2date | date:&apos;d MMMM&apos; }}"/>
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/calendar/writer/writer.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">When happens the challenge</note>
+      </trans-unit>
+      <trans-unit id="writingNotLoggedInWarning" datatype="html">
+        <source>
+						Votre texte sera enregistré jusqu&apos;à ce que vous fermiez votre navigateur.
+						<x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Connectez-vous pour le sauvegarder !<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+					</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/calendar/writer/writer.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">Warning about writing while not being logged in</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

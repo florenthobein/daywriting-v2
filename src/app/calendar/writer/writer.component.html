@@ -1,7 +1,11 @@
 
-	<div class="writer">
+	<div #writer class="writer" [class.is-fullscreen]="fullscreen">
 		<div class="u-container u-mx-auto">
 			<div class="writer-page card card--whiteAlt layout--document u-text-center u-relative u-w-1/2 u-pt-4 u-px-8 u-mb-4">
+
+				<button *ngIf="fullscreen"
+								class="u-absolute u-pin-t u-pin-r u-p-4 u-pr-8"
+								(click)="fullscreen=false"><i class="icon icon--close"></i></button>
 
 				<!-- Title -->
 				<h1 *ngIf="!challenge.mission" class="writer-page-title">
@@ -11,30 +15,34 @@
 				<h1 *ngIf="challenge.mission" class="writer-page-title has-quotes">{{ challenge.mission.texts[langSvc.getLang()] }}</h1>
 
 				<!-- Date -->
-				<div *ngIf="!challenge.mission" class="loading-text loading-text--center"></div>
+				<div *ngIf="!challenge.mission" class="loading-text"></div>
 				<p *ngIf="challenge.mission" class="u-text-tertiary" style="position:relative;bottom:10px"
 					i18n="When happens the challenge@@challengeDateDesc">défi du {{ challenge.datekey | datekey2date | date:'d MMMM' }}
 				</p>
 
 				<!-- Informations -->
-				<p *ngIf="challenge.mission && !authSvc.authenticated()" class="u-text-sm u-text-grey">
+				<p
+					*ngIf="challenge.mission && !authSvc.authenticated()"
+					class="u-text-sm u-text-grey u-bg-palette-g-1 u-absolute u-pin-l u-pin-b u-z-10 u-w-full"
+					style="padding: 10px 20px;">
 					<em i18n="Warning about writing while not being logged in@@writingNotLoggedInWarning">
 						Votre texte sera enregistré jusqu'à ce que vous fermiez votre navigateur.
-						<strong class="u-whitespace-no-wrap">Connectez-vous pour le sauvegarder !</strong>
+						<button class="a u-cursor-pointer" (click)="authSvc.signIn()">Connectez-vous pour le sauvegarder !</button>
 					</em>
 				</p>
 
 				<!-- Editor -->
 				<quill-editor
+					class="ql-editor"
 					#editor
 					*ngIf="challenge.mission"
 					theme="bubble"
 					[modules]="modules"
-					[style]="{height: '200px', 'font-size': '20px'}"
 					[placeholder]="'Ecrivez ici...'"
 					(onEditorCreated)="setFocus($event)"
 					[formControl]="form.controls['editor']"
-					(onContentChanged)="saved=false"></quill-editor>
+					(onContentChanged)="contentChanged()"></quill-editor>
 			</div>
 		</div>
 	</div>
+	<div *ngIf="fullscreen" class="writer-placeholder"></div>

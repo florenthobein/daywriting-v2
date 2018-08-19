@@ -1,31 +1,35 @@
-button {
+.menu-item {
 	position: relative;
+  display: inline-block;
+  border: none;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: #979e9d;
+  font-size: .875rem;
 }
-button:focus {
+.menu-item:focus,
+.menu-item:hover {
+  color: #0e0f0f;
+}
+.menu-item:focus {
 	outline: 0 !important;
 }
-button > span {
+.menu-item-icon,
+.menu-item-ribbon{
 	position: relative;
 	z-index: 10;
 	opacity: 1;
 }
-button.is-active > span,
-button:hover > span,
-button:focus > span {
+.menu-item.is-active .menu-item-icon,
+.menu-item.is-active .menu-item-ribbon,
+.menu-item:hover .menu-item-icon,
+.menu-item:hover .menu-item-ribbon,
+.menu-item:focus .menu-item-icon,
+.menu-item:focus .menu-item-ribbon{
 	color: #f9a03f;
 }
-button > .menu-name > span {
-	position: relative;
-	padding: 2px 6px;
-	border-radius: 2px;
-	background-color: transparent;
-}
-button > .menu-name > span {
-	position: relative;
-	z-index: 10;
-}
-button:before {
-	content: " ";
+.menu-item:before {
+	content: ' ';
 	z-index: 1;
 	position: absolute;
 	width: 70px;
@@ -38,20 +42,34 @@ button:before {
 	transition: 200ms;
 	transform: scale(0, 0);
 }
-button.is-active:before,
-button:hover:before,
-button:focus:before {
+.menu-item.is-active:before,
+.menu-item:hover:before,
+.menu-item:focus:before {
 	transform: scale(1, 1);
 }
-button.is-active > .menu-name > span,
-button:hover > .menu-name > span,
-button:focus > .menu-name > span {
+.menu-item-icon {
+  font-size: 1.25rem; /* xl */
+  color: #ff145d; /* tertiary */
+}
+.menu-item-name {
+	position: relative;
+	padding: 2px 6px;
+	border-radius: 2px;
+	background-color: transparent;
+}
+.menu-item-name {
+	position: relative;
+	z-index: 10;
+}
+.menu-item.is-active .menu-item-name,
+.menu-item:hover .menu-item-name,
+.menu-item:focus .menu-item-name {
 	background-color: #1f1f1f;
 	color: #fff;
 }
-button.is-active > .menu-name:before,
-button:hover > .menu-name:before,
-button:focus > .menu-name:before {
+.menu-item.is-active .menu-item-ribbon:before,
+.menu-item:hover .menu-item-ribbon:before,
+.menu-item:focus .menu-item-ribbon:before {
 	content: "";
 	z-index: 1;
 	position: absolute;
@@ -63,9 +81,9 @@ button:focus > .menu-name:before {
 	border-bottom: 10px solid #4f4f4f;
 	border-radius: 2px;
 }
-button.is-active > .menu-name:after,
-button:hover > .menu-name:after,
-button:focus > .menu-name:after {
+.menu-item.is-active .menu-item-ribbon:after,
+.menu-item:hover .menu-item-ribbon:after,
+.menu-item:focus .menu-item-ribbon:after {
 	content: "";
 	z-index: 1;
 	position: absolute;
